@@ -1,0 +1,117 @@
+
+*{
+	margin:0;
+	padding:0;
+	
+}
+
+body {
+    background-image: url("../Img/background.jpg");	
+	background-size: auto;
+}
+
+header{	
+	height:100px;	
+}
+
+.HeaderImg{
+
+height:100px;
+width: 100%;
+	
+	
+}
+main{
+	      
+	 height:600px;
+	 display: flex;
+	 flex-flow: column wrap;
+	 align-items: center;
+	 
+	
+}
+
+table {
+	
+    font-family: arial, sans-serif;
+    width: 50%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin: 30px auto; 
+	padding: 20px;	
+
+				
+}
+
+h2{
+	text-align:center;	
+	font-weight: 8px;
+	color: blue;
+	margin-top: 150px;
+				
+ }
+
+
+th{    
+     text-align: left;
+	 background-color: blue;
+	 color: white;	 
+	 font-size: 20px;
+	 padding-left: 3px;
+   }
+
+td{
+	border: 1px solid black;	
+	padding-left: 3px;
+ }
+ 
+tr:nth-child(odd) {
+    background-color: #6495ED;
+	border: 1px solid black;
+}
+
+.ImgDimension
+{
+	height: 25px;
+}
+
+a{
+	color: blue;	
+}
+footer
+{		
+	height:100px;	
+	display: block;
+    position: relative;
+		
+}
+.GetButton
+{
+	height: 50 px;
+	width: 120 px;
+	color:blue;
+	text-align: center;	
+	padding: 10px;	
+}
+button
+{
+	color: blue;
+	width: 40 px;
+	
+}
+
+footer::after {
+
+  background-image: url("../Img/footer_background.png");
+  background-repeat: repeat-x;
+  content:"";
+ 
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
