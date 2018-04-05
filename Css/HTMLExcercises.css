@@ -70,6 +70,9 @@ tr:nth-child(odd) {
 	border: 1px solid black;
 }
 
+table td input{
+ width: 100%;   
+}
 .ImgDimension
 {
 	height: 25px;
@@ -98,6 +101,11 @@ button
 	color: blue;
 	width: 40 px;
 	
+}
+
+functBtn
+{	
+			
 }
 
 footer::after {

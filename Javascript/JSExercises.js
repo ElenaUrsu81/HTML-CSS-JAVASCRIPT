@@ -1,5 +1,5 @@
-
-var myProd = [
+	    
+	 var myProd = [
             {
                 "No.": "1",
                 "Product Name": "Milk",
@@ -56,12 +56,11 @@ var myProd = [
 				"Delete": "<button> Delete </button>"
             }
         ]
-
-var table = document.getElementById("TableId");
-
-function PopulateTableFromJSON() {
-        var col = [];
-			
+	 
+	
+	 var table = document.getElementById("TableId");	
+     
+	 var col = [];			
 		for( var i=0; i< myProd.length; i++)
 		{
 			for (var key in myProd[i])
@@ -74,12 +73,15 @@ function PopulateTableFromJSON() {
 				
 			}				
 		}
-		
-		
+    
+    	 
+function PopulateTableFromJSON(){
+       	
+
 		
 		for (var i=0; i< myProd.length; i++)
 		{
-			tr = table.insertRow(-1);
+			var tr = table.insertRow(-1);
 			for (var j=0; j<col.length; j++)
 			{
 				var cell=tr.insertCell(-1);
@@ -97,31 +99,88 @@ function PopulateTableFromJSON() {
 
 function AddProducts()
 {
-	
-	    var col = [];
-			
-		for( var i=0; i< myProd.length; i++)
-		{
-			for (var key in myProd[i])
-			{
-				if(col.indexOf(key)=== -1)
-				{
-					col.push(key);
-					
-				}
+
 				
-			}				
-		}
-	var newRow = table.createElement(tr);
-	
-	
-	for(var i=0;i<col.length; i++)
-	{
-		var cell= tr.insertCell(-1);
+		    var tr = table.insertRow(-1); // row
+			for (var j=0; j< col.length-2; j++)
+			{
+				var td=document.createElement("td");
+				var inputCell = document.createElement("Input");
+				inputCell.setAttribute("class", "inputTxt");
+				inputCell.setAttribute("id","prodInput" +j );
+				inputCell.setAttribute("style", "text");
 		
+				
+				td.appendChild(inputCell);
+				tr.appendChild(td);
+			}
 			
+			var td1=document.createElement("td");
+			var td2=document.createElement("td");
+			
+			var editButton = document.createElement("Button");
+			editButton.innerHTML ="Edit";
+			var delButton = document.createElement("Button");
+			delButton.innerHTML="Delete";
+			
+			td1.appendChild(editButton);
+			tr.appendChild(td1);
+			
+			td2.appendChild(delButton);
+			tr.appendChild(td2);
+			
+			
+		
+}
+
+
+function SaveProducts()
+{
+	/*
+			var tr = table.insertRow(-1); // row
+			for (var j=0; j< col.length-2; j++)
+			{
+				var td=document.createElement("td");
+				var inputCell = document.createElement("Input");
+				inputCell.setAttribute("class", "inputTxt");
+				inputCell.setAttribute("id","prodInput" + j);
+				inputCell.setAttribute("style", "text");
+		
+				
+				td.appendChild(inputCell);
+				tr.appendChild(td);
+			}
+			
+			var td1=document.createElement("td");
+			var td2=document.createElement("td");
+			
+			var editButton = document.createElement("Button");
+			editButton.innerHTML ="Edit";
+			var delButton = document.createElement("Button");
+			delButton.innerHTML="Delete";
+			
+			td1.appendChild(editButton);
+			tr.appendChild(td1);
+			
+			td2.appendChild(delButton);
+			tr.appendChild(td2);
+	
+	
+	var index = table.childNodes.length;
+	var i= myProd.length;
+	for (var j=0; j< col.length-2; j++)
+	{		
+		myProd[i][col[j]].push( document.getElementById("'prodInput' + index").innerHTML);
+		
 	}
-	table.appendChild(newRow);
+		*/
+	
 	
 }
-	
+		 
+	   
+
+
+
+
+
