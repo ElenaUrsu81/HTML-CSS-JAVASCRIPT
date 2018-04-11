@@ -23,11 +23,11 @@ width: 100%;
 }
 main{
 	      
-	 height:600px;
+	 height:500px;
 	 display: flex;
 	 flex-flow: column wrap;
-	 align-items: center;
-	 
+	 align-items: center;	
+	  
 	
 }
 
@@ -37,7 +37,7 @@ table {
     width: 50%;
 	border: 1px solid black;
 	border-collapse: collapse;
-	margin: 30px auto; 
+	margin: 150px auto; 
 	padding: 20px;	
 
 				
@@ -88,19 +88,21 @@ footer
     position: relative;
 		
 }
-.GetButton
+.BtnDiv
+{
+	height:200px;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	
+}
+
+.AddButton
 {
 	height: 50 px;
 	width: 120 px;
-	color:blue;
 	text-align: center;	
 	padding: 10px;	
-}
-button
-{
-	color: blue;
-	width: 40 px;
-	
 }
 
 

@@ -117,6 +117,7 @@ function delRow(r)
 
 function editRow(r)
 {
+	document.getElementById("AddBtnId").disabled=true;
 	
 	var rIndex = r.parentNode.parentNode.rowIndex;
    	
@@ -131,32 +132,27 @@ function editRow(r)
 		td[i].appendChild(inputCell);
 	}	
 	
-			
-		
-			
+				
 			
 			var td1=document.createElement("td");
 			var td2=document.createElement("td");
 			
 			var saveButton = document.createElement("Button");
 			saveButton.innerHTML ="Save";
+			saveButton.setAttribute("onClick", 'SaveProd(this)');
 		
 			
 			
-			var cancelButton = document.createElement("Button");
-		 
+			var cancelButton = document.createElement("Button");		 
 			cancelButton.innerHTML="Cancel";
+			cancelButton.setAttribute("onClick", 'SaveProd(this)');
+			
 			
 			document.getElementById("TableId").rows[rIndex].cells[col.length-2].innerHTML = "";
 			document.getElementById("TableId").rows[rIndex].cells[col.length-1].innerHTML = "";
 			
-			td[col.length-2].appendChild(saveButton);
-			
-			
+			td[col.length-2].appendChild(saveButton);			
 			td[col.length-1].appendChild(cancelButton);
-			
-	
-	
 	
 	
 	
@@ -165,8 +161,9 @@ function editRow(r)
 				
 function AddProducts()
 {
-       
-		
+    		document.getElementById("AddBtnId").disabled=true;
+							
+			
 		    var tr = table.insertRow(-1); // row
 			for (var j=0; j< col.length-2; j++)
 			{
@@ -179,10 +176,29 @@ function AddProducts()
 				td.appendChild(inputCell);
 				tr.appendChild(td);
 			}
-			
-			
+
+
 						
+			var td1=document.createElement("td");
+			var td2=document.createElement("td");
 			
+			var saveButton = document.createElement("Button");
+			saveButton.innerHTML ="Save";
+		    saveButton.setAttribute("onClick", 'SaveProducts()');
+			
+			
+			var cancelButton = document.createElement("Button");		 
+			cancelButton.innerHTML="Cancel";
+			cancelButton.setAttribute("onClick", 'CancelProducts()');
+			
+					
+			td1.appendChild(saveButton);
+			tr.appendChild(td1);
+			
+			td2.appendChild(cancelButton);
+			tr.appendChild(td2);		
+				
+		
 		
 }
 
@@ -190,9 +206,62 @@ function CancelProducts()
 {
 	
 	document.getElementById("TableId").deleteRow(myProd.length + 1);
+	document.getElementById("AddBtnId").disabled = false;
 	
 	
 }
+
+Array.prototype.insert = function (index, item) {
+  this.splice(index, 0, item);
+};
+
+
+function SaveProd(r)
+{
+	var rIndex = r.parentNode.parentNode.rowIndex;	
+	
+			
+	var jsonData = {};	
+	for(var i=0; i<(col.length-2);i++)
+			jsonData[col[i]] = document.getElementsByTagName("Input")[i].value;
+	
+	myProd.splice(rIndex-1,1);   	
+	myProd.insert(rIndex-1,jsonData); 	
+			
+			document.getElementById("TableId").deleteRow(rIndex);
+			var tr = table.insertRow(rIndex);
+			for (var j=0; j<col.length-2; j++)
+			{
+				var cell=tr.insertCell(-1);
+			    cell.innerHTML = myProd[rIndex-1][col[j]];
+			}
+			
+			var td1=document.createElement("td");
+			var td2=document.createElement("td");
+			
+			var editButton = document.createElement("Button");
+			editButton.innerHTML ="Edit";
+			editButton.setAttribute("onClick", 'editRow(this)');
+			
+			
+			var delButton = document.createElement("Button");
+		    delButton.setAttribute("onClick", 'delRow(this)');
+			delButton.innerHTML="Delete";
+			
+			td1.appendChild(editButton);
+			tr.appendChild(td1);
+			
+			td2.appendChild(delButton);
+			tr.appendChild(td2);
+			
+			
+									
+			document.getElementById("AddBtnId").disabled = false;
+			
+						
+		
+}
+
 
 function SaveProducts()
 {
@@ -203,7 +272,6 @@ function SaveProducts()
 			jsonData[col[i]] = document.getElementsByTagName("Input")[i].value;
 	
 	myProd.push(jsonData);
-	
 		
 			
 			var tr = table.insertRow(-1);
@@ -218,6 +286,9 @@ function SaveProducts()
 			
 			var editButton = document.createElement("Button");
 			editButton.innerHTML ="Edit";
+			editButton.setAttribute("onClick", 'editRow(this)');
+			
+			
 			var delButton = document.createElement("Button");
 		    delButton.setAttribute("onClick", 'delRow(this)');
 			delButton.innerHTML="Delete";
@@ -228,9 +299,9 @@ function SaveProducts()
 			td2.appendChild(delButton);
 			tr.appendChild(td2);
 			
-		
-	        table.deleteRow(myProd.length);
-			
+		    table.deleteRow(myProd.length);
+						
+			document.getElementById("AddBtnId").disabled = false;
 			
 						
 		
