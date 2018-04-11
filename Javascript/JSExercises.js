@@ -145,7 +145,7 @@ function editRow(r)
 			
 			var cancelButton = document.createElement("Button");		 
 			cancelButton.innerHTML="Cancel";
-			cancelButton.setAttribute("onClick", 'SaveProd(this)');
+			cancelButton.setAttribute("onClick", 'CancelRow(this)');
 			
 			
 			document.getElementById("TableId").rows[rIndex].cells[col.length-2].innerHTML = "";
@@ -262,6 +262,19 @@ function SaveProd(r)
 		
 }
 
+function CancelRow(r)
+{
+	var rIndex = r.parentNode.parentNode.rowIndex;	
+	var tr = table.rows[rIndex];
+	
+	for (var j=0; j<col.length; j++)
+	{
+		var cell= tr.cells[j];
+	    cell.innerHTML = myProd[rIndex-1][col[j]];
+	}
+		
+	
+}
 
 function SaveProducts()
 {
@@ -301,8 +314,7 @@ function SaveProducts()
 			
 		    table.deleteRow(myProd.length);
 						
-			document.getElementById("AddBtnId").disabled = false;
-			
+			document.getElementById("AddBtnId").disabled = false;			
 						
 		
 }
